@@ -8,7 +8,7 @@ use dbOficina
 
 -- os codigos abaixo cria um tabela de usuarios
 
-create table dbUsuarios(
+create table tbUsuarios(
 	idUser int  primary key,
     nomeUser varchar(45) not null,
     numeroUser varchar(15),
@@ -19,37 +19,37 @@ create table dbUsuarios(
 
 -- o Comando abaixo descreve a tabela
 
-describe dbUsuarios;
+describe tbUsuarios;
 
 -- a linha abaixo insere dados na tabela
 
-insert into dbUsuarios (idUser, nomeUser, numeroUser, cargo, loginUser, senhaUser)
+insert into tbUsuarios (idUser, nomeUser, numeroUser, cargo, loginUser, senhaUser)
 values (1, 'Ronado Daniel', '81999717049', 'Gerente', 'ronaldodaniel', '123');
 
 
 -- a linha abaixo exibe os dados da tabela
 
-select * from dbUsuarios;
+select * from tbUsuarios;
 
-insert into dbUsuarios (idUser, nomeUser, numeroUser, cargo, loginUser, senhaUser)
+insert into tbUsuarios (idUser, nomeUser, numeroUser, cargo, loginUser, senhaUser)
 values (2, 'Rosinaldo Daniel', '81999889609', 'Mecanico','rosinaldodaniel', '1234'),
 	   (3, 'Gabriela Jose', '81986761215', 'Mecanico',  'gabrielajose', '12345');
        
-select * from dbUsuarios;
+select * from tbUsuarios;
 
 -- a linha abaixo modifica dados na tabela
 
-update dbUsuarios set numeroUser = '81999707149' where idUser=1;
+update tbUsuarios set numeroUser = '81999707149' where idUser=1;
 
 -- a linha abaixo deleta dados da tabela
 
-delete from dbUsuarios where idUser=3;
+delete from tbUsuarios where idUser=3;
 
-select * from dbUsuarios;
+select * from tbUsuarios;
 
 -- esta linha criara uma tabela para clientes
 
-create table dbCliente(	
+create table tbCliente(	
 	idCliente int primary key auto_increment,
     nomeCliente varchar(45) not null,
     endCliente varchar(80),
@@ -58,16 +58,52 @@ create table dbCliente(
 
 );
 
-describe dbCliente;
+describe tbCliente;
 
-insert into dbCliente (nomeCliente, numeroCli, emailClie)
+insert into tbCliente (nomeCliente, numeroCli, emailClie)
 values ('Joao Jose', '81993275837' ,'seila@gmail.com'),
 	   ('Paulo Joao', '81995435472' ,'seila2@gmail.com'),
 	   ('Gustavo Pereira', '819857621232' ,'seila3@gmail.com');
        
-select * from dbCliente;
+select * from tbCliente;
 
-update dbCliente set endCliente='Rua da Gloria, 197 - Boa vista' where idCliente=2 ;
+update tbCliente set endCliente='Rua da Gloria, 197 - Boa vista' where idCliente=2 ;
 
-select * from dbCliente;
+select * from tbCliente;
+
+use dbOficina;
+
+create table tbOs(
+	os int primary key auto_increment,
+    -- quando um insert for feito o dataOs recebe o horario atual do servidor
+    dataOs timestamp default current_timestamp,
+    veiculo varchar(45) not null,
+    defeito varchar(100) not null, 
+    servico varchar(45),
+    mecanico varchar(50),
+    valorServico decimal(6,2),
+    idCliente int not null,
+    foreign key (idCliente) references tbCliente(idCliente)
+);
+
+describe tbOs; 
+
+insert into tbOs(veiculo, defeito, servico, mecanico, valorServico, idCliente)
+values('prisma', 'arcondicionado quebrado', 'Troca do Filtro', 'Gabriel', 500.45, 3);
+
+select * from tbOs;
+
+-- o codigo abaixo tras informacoes de duas tabelas
+
+-- Referenciar o atributo colocando A VARIAVEL na frente
+-- ENTENDER TBOS COMO O
+-- entender tbcliente como c
+-- onde a chave estrangeira de O é a chave primaria de C
+select
+O.os,O.veiculo,O.defeito,O.servico,O.mecanico,O.valorServico,O.idCliente,
+C.nomeCliente,C.numeroCli,C.emailClie
+from tbOs as O 
+inner join tbCliente as C 
+on O.idCliente = C.idCliente; 
+
 
