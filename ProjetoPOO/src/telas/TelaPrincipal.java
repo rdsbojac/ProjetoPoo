@@ -15,7 +15,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
-        EditaUsuButton3.setEnabled(false);
+        editUserButton.setEnabled(false);
         CadastraUsuButton.setEnabled(false);
         EditarOsButton.setEnabled(false);
     }
@@ -32,14 +32,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         CadastraUsuButton = new javax.swing.JButton();
         criarOsButton = new javax.swing.JButton();
-        EditaUsuButton3 = new javax.swing.JButton();
+        editUserButton = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         EditarOsButton = new javax.swing.JButton();
         listarOsbutton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        labelPrincipal = new javax.swing.JLabel();
+        labelConectado = new javax.swing.JLabel();
+        sairButton = new javax.swing.JButton();
         statusLabel = new javax.swing.JLabel();
+        desktopPainel = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -60,11 +61,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        EditaUsuButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        EditaUsuButton3.setText("Editar Usuário");
-        EditaUsuButton3.addActionListener(new java.awt.event.ActionListener() {
+        editUserButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        editUserButton.setText("Editar Usuário");
+        editUserButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditaUsuButton3ActionPerformed(evt);
+                editUserButtonActionPerformed(evt);
             }
         });
 
@@ -84,78 +85,97 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Painel Principal");
+        labelPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        labelPrincipal.setText("Painel Principal");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Conectado: ");
+        labelConectado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        labelConectado.setText("Conectado: ");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("SAIR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        sairButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        sairButton.setText("SAIR");
+        sairButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                sairButtonActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout desktopPainelLayout = new javax.swing.GroupLayout(desktopPainel);
+        desktopPainel.setLayout(desktopPainelLayout);
+        desktopPainelLayout.setHorizontalGroup(
+            desktopPainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        desktopPainelLayout.setVerticalGroup(
+            desktopPainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator2)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(sairButton)
+                .addGap(25, 25, 25))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(labelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(editUserButton)
+                    .addComponent(CadastraUsuButton)
+                    .addComponent(EditarOsButton)
+                    .addComponent(listarOsbutton)
+                    .addComponent(criarOsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(labelConectado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(statusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listarOsbutton)
-                            .addComponent(criarOsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(EditarOsButton))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EditaUsuButton3)
-                            .addComponent(CadastraUsuButton))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(25, 25, 25))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(desktopPainel)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EditarOsButton)
-                    .addComponent(criarOsButton))
-                .addGap(28, 28, 28)
-                .addComponent(listarOsbutton)
-                .addGap(8, 8, 8)
+                .addComponent(labelPrincipal)
+                .addGap(3, 3, 3)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addContainerGap())
+                    .addComponent(labelConectado)
+                    .addComponent(statusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(CadastraUsuButton)
                         .addGap(28, 28, 28)
-                        .addComponent(EditaUsuButton3)
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(statusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(criarOsButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(listarOsbutton)
+                        .addGap(18, 18, 18)
+                        .addComponent(EditarOsButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(CadastraUsuButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(editUserButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(desktopPainel)
+                        .addGap(18, 18, 18)))
+                .addComponent(sairButton)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_START);
@@ -164,28 +184,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CadastraUsuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastraUsuButtonActionPerformed
-        // TODO add your handling code here:
+        //Aqui sera implementado a tela de cadastro de usuarios dentro do desktoppainel
+        TelaCadUsuario usuario = new TelaCadUsuario();
+        usuario.setVisible(true);
+        desktopPainel.add(usuario);
+        
     }//GEN-LAST:event_CadastraUsuButtonActionPerformed
 
     private void criarOsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarOsButtonActionPerformed
-        // TODO add your handling code here:
+        //Aqui sera implementado a tela de criar O.S dentro do desktop
+        TelaCriarOs os = new TelaCriarOs();
+        os.setVisible(true);
+        desktopPainel.add(os);
+        
     }//GEN-LAST:event_criarOsButtonActionPerformed
 
-    private void EditaUsuButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditaUsuButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EditaUsuButton3ActionPerformed
+    private void editUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editUserButtonActionPerformed
+        // Aqui sera implementado a tela de editar usuarios dentro do desktop
+        TelaEditarUser editar = new TelaEditarUser();
+        editar.setVisible(true);
+        desktopPainel.add(editar);
+    }//GEN-LAST:event_editUserButtonActionPerformed
 
     private void EditarOsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarOsButtonActionPerformed
-        // TODO add your handling code here:
+        // Aqui sera implementado a tela de editar OS dentro do desktop
     }//GEN-LAST:event_EditarOsButtonActionPerformed
 
     private void listarOsbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarOsbuttonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listarOsbuttonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_sairButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,15 +256,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton CadastraUsuButton;
-    public static javax.swing.JButton EditaUsuButton3;
     public static javax.swing.JButton EditarOsButton;
     public static javax.swing.JButton criarOsButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    public static javax.swing.JDesktopPane desktopPainel;
+    public static javax.swing.JButton editUserButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel labelConectado;
+    private javax.swing.JLabel labelPrincipal;
     private javax.swing.JButton listarOsbutton;
+    private javax.swing.JButton sairButton;
     public static javax.swing.JLabel statusLabel;
     // End of variables declaration//GEN-END:variables
+
+    private TelaCriarOs TelaCriarOs() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private TelaEditarUser TelaEditarUser() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
