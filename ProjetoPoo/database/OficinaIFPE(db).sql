@@ -4,7 +4,7 @@ create database dbOficina;
 
 -- a linha abaixo escolhe o banco de dados
 
-use dbOficina
+use dbOficina;
 
 -- os codigos abaixo cria um tabela de usuarios
 

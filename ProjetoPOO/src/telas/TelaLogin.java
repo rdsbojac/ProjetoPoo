@@ -4,7 +4,7 @@
  */
 package telas;
 import java.sql.*;
-import br.com.projetopoo.datal.ModuloConexao;
+import datal.ModuloConexao;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
