@@ -43,6 +43,8 @@ public class TelaLogin extends javax.swing.JFrame {
                 if (perfil.equals("admin")){
                     TelaPrincipal principal = new TelaPrincipal();
                     principal.setVisible(true);
+                    TelaListarOs telaListar = new TelaListarOs();
+                    telaListar.setVisible(true);
                     TelaPrincipal.CadastraUsuButton.setEnabled(true);
                     TelaPrincipal.editUserButton.setEnabled(true);
                     TelaPrincipal.EditarOsButton.setEnabled(true);
@@ -53,11 +55,14 @@ public class TelaLogin extends javax.swing.JFrame {
                 }else{
                     TelaPrincipal principal = new TelaPrincipal();
                     principal.setVisible(true);
+                    TelaListarOs telaListar = new TelaListarOs();
+                    telaListar.setVisible(true);
                     TelaPrincipal.CadastraUsuButton.setEnabled(false);
                     TelaPrincipal.editUserButton.setEnabled(false);
                     TelaPrincipal.EditarOsButton.setEnabled(false);
                     TelaPrincipal.statusLabel.setText(nome);
                     TelaPrincipal.statusLabel.setForeground(Color.red);
+ 
       
                 }
             }else{
