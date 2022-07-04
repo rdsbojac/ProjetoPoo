@@ -5,6 +5,7 @@
 package telas;
 import java.sql.*;
 import br.com.projetopoo.datal.ModuloConexao;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -43,18 +44,20 @@ public class TelaLogin extends javax.swing.JFrame {
                     TelaPrincipal principal = new TelaPrincipal();
                     principal.setVisible(true);
                     TelaPrincipal.CadastraUsuButton.setEnabled(true);
-                    TelaPrincipal.EditaUsuButton3.setEnabled(true);
+                    TelaPrincipal.editUserButton.setEnabled(true);
                     TelaPrincipal.EditarOsButton.setEnabled(true);
                     TelaPrincipal.criarOsButton.setEnabled(false);
                     TelaPrincipal.statusLabel.setText(nome);
+                    TelaPrincipal.statusLabel.setForeground(Color.red);
                     this.dispose();
                 }else{
                     TelaPrincipal principal = new TelaPrincipal();
                     principal.setVisible(true);
                     TelaPrincipal.CadastraUsuButton.setEnabled(false);
-                    TelaPrincipal.EditaUsuButton3.setEnabled(false);
+                    TelaPrincipal.editUserButton.setEnabled(false);
                     TelaPrincipal.EditarOsButton.setEnabled(false);
                     TelaPrincipal.statusLabel.setText(nome);
+                    TelaPrincipal.statusLabel.setForeground(Color.red);
       
                 }
             }else{
