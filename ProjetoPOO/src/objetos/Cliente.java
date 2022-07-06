@@ -10,14 +10,21 @@ package objetos;
  */
 public class Cliente extends Pessoa{
 
-	private String número;
+    
+    
+        private int idCliente;
+        private String nomeCliente;
+        private String endCliente;
+	private String numero;
 	private String email;
 	
-	public String getNúmero() {
-		return número;
+        
+        // =========== GETTERS AND SETTERS ===========\\
+	public String getNumero() {
+		return numero;
 	}
-	public void setNúmero(String número) {
-		this.número = número;
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 	public String getEmail() {
 		return email;
@@ -25,7 +32,29 @@ public class Cliente extends Pessoa{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
+        public int getIdCliente() {
+            return idCliente;
+        }
+
+        public String getNomeCliente() {
+            return nomeCliente;
+        }
+
+        public String getEndCliente() {
+            return endCliente;
+        }
+
+        public void setIdCliente(int idCliente) {
+            this.idCliente = idCliente;
+        }
+
+        public void setNomeCliente(String nomeCliente) {
+            this.nomeCliente = nomeCliente;
+        }
+
+        public void setEndCliente(String endCliente) {
+            this.endCliente = endCliente;
+        }
 	
 }
