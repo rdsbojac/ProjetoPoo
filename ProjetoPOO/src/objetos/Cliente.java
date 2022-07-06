@@ -8,6 +8,24 @@ package objetos;
  *
  * @author marcos filho
  */
-public class Cliente {
-    
+public class Cliente extends Pessoa{
+
+	private String número;
+	private String email;
+	
+	public String getNúmero() {
+		return número;
+	}
+	public void setNúmero(String número) {
+		this.número = número;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
+	
 }
