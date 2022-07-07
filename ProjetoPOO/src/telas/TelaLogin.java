@@ -14,33 +14,41 @@ import javax.swing.JOptionPane;
  */
 public class TelaLogin extends javax.swing.JFrame {
     
-    Connection conexao = null;
-    PreparedStatement  pst = null;
-    ResultSet rs = null;
+    
+    
 
     
-    public void logar(){
-        String sql = "select * from tbUsuarios where loginUser=? and senhaUser= ?";
-        try{
+    public void validar(){
         
+        Connection conexao = null;
+        
+        String sql = "select * from tbUsuarios where loginUser=? and senhaUser=?";
+        try {
+
+            // Gera conexão e Statement
+            conexao = new ModuloConexao().conector();
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            
             //CONSULTA BANCO DE DADOS E SUBSTITUI OS "?" PELO CONTEUDO SELECIONADO
-            pst = conexao.prepareStatement(sql);
-            pst.setString(1, idInput.getText());
-            pst.setString(2, senhaInput.getText()); 
+            stmt.setString(1, idInput.getText());
+            stmt.setString(2, senhaInput.getText()); 
+            
             //EXECUTA AS INTRUÇÕES
-            rs = pst.executeQuery();
-            // verifica se existe no banco de dados um usuario correspondente
-            // SE sim instancia a telaAdm
+            ResultSet rs = stmt.executeQuery();
+            
+            // verifica se os dados existem no BD SIM instancia a telaAdm
             if (rs.next()){
                 // a linha abaixo obtem o campo perfil da tabela de usuarios 
                 // para tratar o que cada usuario pode fazer no sistema
-                String perfil = rs.getString(7);
+                
+                /*String perfil = rs.getString(7);*/
+                
                 String nome = rs.getString(2);
                 String cargo = rs.getString(4);
                 //print para saber o retorno da strng Perfil
-                System.out.println(perfil);
+                System.out.println(cargo);
                 // compara o perfil com "adimn" para todos os botoes ficarem disponiveis
-                if (perfil.equals("admin")){
+                if (cargo.equals("Gerente")){
                     TelaPrincipal principal = new TelaPrincipal();
                     principal.setVisible(true);
                     TelaListarOs telaListar = new TelaListarOs();
@@ -68,9 +76,10 @@ public class TelaLogin extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(null, "usuario/senha inválido");
             }
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null,e);
-            }  
+        
+        }
     }
         
     /**
@@ -78,8 +87,10 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        /*
         conexao = ModuloConexao.conector();
         System.out.println(conexao);
+        */
     }
 
     /**
@@ -172,7 +183,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void confirmarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarButtonActionPerformed
         //chamando o metodo logar
-        logar();   
+        validar();   
     }//GEN-LAST:event_confirmarButtonActionPerformed
 
     /**

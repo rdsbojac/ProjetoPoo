@@ -4,16 +4,29 @@
  */
 package datal;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
  * @author Ronaldo Daniel
  */
 public class ModuloConexao {
+    // Factory
+    
+    public Connection conector() {
+        try {
+            return DriverManager.getConnection(
+             "jdbc:mysql://localhost:3307/dbOficina", "root", "root");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    /*
     //Metodo para conexao com banco de dados
-    public static Connection conector() {
+    public Connection conector() {
         Connection conexao = null;
         // chamando o driver que foi importado na biblioteca
         String driver = "com.mysql.cj.jdbc.Driver";
@@ -30,8 +43,6 @@ public class ModuloConexao {
             System.out.println(e);
             return null;
         }
-            
-            
-    
-    }
+        */
 }
+

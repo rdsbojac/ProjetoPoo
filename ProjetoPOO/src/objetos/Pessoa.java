@@ -8,15 +8,9 @@ package objetos;
  *
  * @author marcos filho
  */
-public class Pessoa {
-	private String nome;
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-		
+public abstract class Pessoa {
+    // Atributos
+    public String nome;
+    protected String numero;
+    
 }

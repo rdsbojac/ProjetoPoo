@@ -1,4 +1,6 @@
+drop database dbOficina;
 -- Cria o Banco de Dados dbOficina
+
 create database dbOficina;
 
 -- Seleciona o Banco de Dados ------------------

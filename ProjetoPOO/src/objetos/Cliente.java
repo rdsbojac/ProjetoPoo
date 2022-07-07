@@ -11,9 +11,8 @@ package objetos;
 public class Cliente extends Pessoa{
 
     
-    
-        private int idCliente;
-        private String nomeCliente;
+        // ===== ATRIBUTOS ===== \\
+        private String nome;
         private String endCliente;
 	private String numero;
 	private String email;
@@ -33,24 +32,16 @@ public class Cliente extends Pessoa{
 		this.email = email;
 	}
 
-        public int getIdCliente() {
-            return idCliente;
-        }
-
-        public String getNomeCliente() {
-            return nomeCliente;
+        public String getNome() {
+            return nome;
         }
 
         public String getEndCliente() {
             return endCliente;
         }
 
-        public void setIdCliente(int idCliente) {
-            this.idCliente = idCliente;
-        }
-
-        public void setNomeCliente(String nomeCliente) {
-            this.nomeCliente = nomeCliente;
+        public void setNome(String nome) {
+            this.nome = nome;
         }
 
         public void setEndCliente(String endCliente) {

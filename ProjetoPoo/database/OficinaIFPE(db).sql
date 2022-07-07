@@ -1,3 +1,5 @@
+drop database dboficina;
+
 -- esta linha abaixo cria um banco de dados
 
 create database dbOficina;
@@ -9,12 +11,13 @@ use dbOficina;
 -- os codigos abaixo cria um tabela de usuarios
 
 create table tbUsuarios(
-	idUser int  primary key,
+	id int not null auto_increment,
     nomeUser varchar(45) not null,
     numeroUser varchar(15),
     cargo varchar(15) not null,
     loginUser varchar(15) not null unique,
-    senhaUser varchar(15) not null
+    senhaUser varchar(15) not null,
+    primary key (id)
 );
 
 -- o Comando abaixo descreve a tabela
@@ -23,17 +26,17 @@ describe tbUsuarios;
 
 -- a linha abaixo insere dados na tabela
 
-insert into tbUsuarios (idUser, nomeUser, numeroUser, cargo, loginUser, senhaUser)
-values (1, 'Ronado Daniel', '81999717049', 'Gerente', 'ronaldodaniel', '123');
+insert into tbUsuarios (nomeUser, numeroUser, cargo, loginUser, senhaUser)
+values ('Ronado Daniel', '81999717049', 'Gerente', 'ronaldodaniel', '123');
 
 
 -- a linha abaixo exibe os dados da tabela
 
 select * from tbUsuarios;
 
-insert into tbUsuarios (idUser, nomeUser, numeroUser, cargo, loginUser, senhaUser)
-values (2, 'Rosinaldo Daniel', '81999889609', 'Mecanico','rosinaldodaniel', '1234'),
-	   (3, 'Gabriela Jose', '81986761215', 'Mecanico',  'gabrielajose', '12345');
+insert into tbUsuarios (nomeUser, numeroUser, cargo, loginUser, senhaUser)
+values ('Rosinaldo Daniel', '81999889609', 'Mecanico','rosinaldodaniel', '1234'),
+	   ('Gabriela Jose', '81986761215', 'Mecanico',  'gabrielajose', '12345');
        
 select * from tbUsuarios;
 
@@ -50,12 +53,12 @@ select * from tbUsuarios;
 -- esta linha criara uma tabela para clientes
 
 create table tbCliente(	
-	idCliente int primary key auto_increment,
+	idCliente int not null auto_increment,
     nomeCliente varchar(45) not null,
     endCliente varchar(80),
     numeroCli varchar(15) not null,
-    emailClie varchar(45) 
-
+    emailClie varchar(45),
+	primary key (idCliente)
 );
 
 describe tbCliente;

@@ -4,6 +4,12 @@
  */
 package telas;
 
+import javax.swing.JOptionPane;
+import objetos.Gerente;
+import objetos.Mecanico;
+import objetos.Usuario;
+import objetos.GerenteDao;
+
 /**
  *
  * @author Ronaldo Daniel
@@ -217,6 +223,45 @@ public class TelaCadUsuario extends javax.swing.JInternalFrame {
 
     private void confirmarCadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarCadastroButtonActionPerformed
         // TODO add your handling code here:
+        // Verifica se o cargo é valido e estancia o objeto correspondente
+        
+        /*
+        boolean valido;
+        Usuario usuario = null;
+        String cargo = cadastroCargoInput.getText();
+        if (cargo.equals("Gerente")) {
+            valido = true;
+            usuario = new Gerente();
+        } else if (cargo.equals("Mecanico")) {
+            valido = true;
+            usuario = new Mecanico();
+        } else {
+            valido = false;
+            JOptionPane.showMessageDialog(null, "Cargo Inválido!");
+        }
+        */
+        boolean valido = true;
+        Mecanico usuario = new Mecanico();
+        
+        // Salva os valores no objeto se o cargo for valido
+        if (valido == true) {
+            // Gera o data access object
+            GerenteDao dao = new GerenteDao();
+            
+            // ==== ID DEVE SER INSERIDO AUTOMATICAMENTE PELO SQL ====
+            usuario.setNome(cadastroNomeInput.getText());
+            usuario.setNumero(cadastroTelefoneInput.getText());
+            usuario.setCargo(cadastroCargoInput.getText());
+            usuario.setLogin(cadastroUsuarioInput.getText());
+            usuario.setSenha(cadastroSenhaInput.getText());
+            
+            // Cadastra o usuario
+            dao.cadastrarUsuario(usuario);
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_confirmarCadastroButtonActionPerformed
 
 
