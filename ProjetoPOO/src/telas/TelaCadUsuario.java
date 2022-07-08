@@ -5,10 +5,7 @@
 package telas;
 
 import javax.swing.JOptionPane;
-import objetos.Gerente;
-import objetos.Mecanico;
 import objetos.Usuario;
-import objetos.GerenteDao;
 import objetos.UsuarioDao;
 
 /**

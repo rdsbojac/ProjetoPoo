@@ -15,7 +15,7 @@ public class OrdemServico {
     String veiculo;
     String defeito;
     String servico;
-    Mecanico mecanico;
+    Usuario mecanico;
     double valorServico;
     Cliente cliente;
 
@@ -41,7 +41,7 @@ public class OrdemServico {
         return servico;
     }
 
-    public Mecanico getMecanico() {
+    public Usuario getMecanico() {
         return mecanico;
     }
 
@@ -73,7 +73,7 @@ public class OrdemServico {
         this.servico = servico;
     }
 
-    public void setMecanico(Mecanico mecanico) {
+    public void setMecanico(Usuario mecanico) {
         this.mecanico = mecanico;
     }
 
