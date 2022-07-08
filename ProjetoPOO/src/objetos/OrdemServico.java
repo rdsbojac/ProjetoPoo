@@ -10,18 +10,18 @@ package objetos;
  */
 public class OrdemServico {
     
-    private int os;
-    String dataOs;
-    String veiculo;
-    String defeito;
-    String servico;
-    Usuario mecanico;
-    double valorServico;
-    Cliente cliente;
+    private Long os;
+    private String dataOs;
+    private String veiculo;
+    private String defeito;
+    private String servico;
+    private Usuario mecanico;
+    private double valorServico;
+    private Cliente cliente;
 
     
     // ========= GETTERS AND SETTERS ======= \\
-    public int getOs() {
+    public Long getOs() {
         return os;
     }
 
@@ -53,7 +53,7 @@ public class OrdemServico {
         return cliente;
     }
 
-    public void setOs(int os) {
+    public void setOs(Long os) {
         this.os = os;
     }
 
