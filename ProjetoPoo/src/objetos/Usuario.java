@@ -14,6 +14,7 @@ public class Usuario extends Pessoa{
     private String nome;
     private String numero;
     private String cargo;
+    private String perfil;
     private String login;
     private String senha;
     
@@ -38,6 +39,14 @@ public class Usuario extends Pessoa{
         return cargo;
     }
 
+    public String getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
+    }
+    
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
@@ -53,7 +62,6 @@ public class Usuario extends Pessoa{
     public String getSenha() {
         return senha;
     }
-
     
     public void setSenha(String senha) {    
         this.senha = senha;

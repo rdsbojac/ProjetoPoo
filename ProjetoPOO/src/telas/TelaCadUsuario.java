@@ -43,7 +43,7 @@ public class TelaCadUsuario extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         cadastroSenhaInput = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        cadastroPerfilInput1 = new javax.swing.JTextField();
+        cadastroPerfilInput = new javax.swing.JTextField();
         confirmarCadastroButton = new javax.swing.JButton();
 
         setClosable(true);
@@ -102,10 +102,10 @@ public class TelaCadUsuario extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Perfil");
 
-        cadastroPerfilInput1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cadastroPerfilInput1.addActionListener(new java.awt.event.ActionListener() {
+        cadastroPerfilInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cadastroPerfilInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroPerfilInput1ActionPerformed(evt);
+                cadastroPerfilInputActionPerformed(evt);
             }
         });
 
@@ -124,7 +124,7 @@ public class TelaCadUsuario extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7))
                 .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cadastroPerfilInput1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cadastroPerfilInput, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cadastroSenhaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cadastroUsuarioInput, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cadastroCargoInput, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,7 +157,7 @@ public class TelaCadUsuario extends javax.swing.JInternalFrame {
                     .addComponent(cadastroSenhaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cadastroPerfilInput1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cadastroPerfilInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
@@ -191,7 +191,7 @@ public class TelaCadUsuario extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addGap(37, 37, 37)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(confirmarCadastroButton)
                 .addContainerGap())
         );
@@ -215,64 +215,62 @@ public class TelaCadUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cadastroSenhaInputActionPerformed
 
-    private void cadastroPerfilInput1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroPerfilInput1ActionPerformed
+    private void cadastroPerfilInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroPerfilInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cadastroPerfilInput1ActionPerformed
+    }//GEN-LAST:event_cadastroPerfilInputActionPerformed
 
     private void confirmarCadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarCadastroButtonActionPerformed
         // TODO add your handling code here:
         // Recolhe os inputs
         String nome = cadastroNomeInput.getText().strip();
         String numero = cadastroTelefoneInput.getText().strip();
-        String cargo = cadastroCargoInput.getText().toLowerCase();
+        String cargo = cadastroCargoInput.getText().strip().toLowerCase();
         String login = cadastroUsuarioInput.getText().strip();
         String senha = cadastroSenhaInput.getText().strip();
+        String perfil = cadastroPerfilInput.getText().strip().toLowerCase();
         
         // Verifica se todos os campos foram preenchidos
         if (nome.isBlank() || numero.isBlank() || cargo.isBlank()
-            || login.isBlank() || senha.isBlank()) {
+            || login.isBlank() || senha.isBlank() || perfil.isBlank()) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         } else {
-            // Verifica se o cargo é valido e estancia o objeto correspondente
+            
             boolean valido = false;
-        
-            if (cargo.equals("gerente") || cargo.equals("mecanico")) {
+            
+            // Verifica se o PERFIL e CARGO são válidos
+            if ((perfil.equals("admin") || perfil.equals("user")) &&
+                (cargo.equals("gerente") || cargo.equals("mecanico"))) {
                 valido = true;
             } else {
-                JOptionPane.showMessageDialog(null, "Cargo inválido!");
+                JOptionPane.showMessageDialog(null, "Perfil ou cargo inválido!");
             }
-                // Salva os valores no objeto se o cargo for valido
-                if (valido) {
+            
+            // Salva os valores no objeto se o cargo for valido
+            if (valido) {
 
-                    Usuario usuario = new Usuario();
+                Usuario usuario = new Usuario();
 
-                    // Passa todas os valores para serem salvos no Banco de Dados
-                    usuario.setNome(nome);
-                    usuario.setNumero(numero);
-                    usuario.setCargo(cargo);
-                    usuario.setLogin(login);
-                    usuario.setSenha(senha);
+                // Passa todas os valores para serem salvos no Banco de Dados
+                usuario.setNome(nome);
+                usuario.setNumero(numero);
+                usuario.setCargo(cargo);
+                usuario.setPerfil(perfil);
+                usuario.setLogin(login);
+                usuario.setSenha(senha);
 
-                    // Gera o Data Access Object
-                    UsuarioDao dao = new UsuarioDao();
-                    // Cadastra o usuario
-                    dao.cadastrarUsuario(usuario);
-                }
+                // Gera o Data Access Object
+                UsuarioDao dao = new UsuarioDao();
+                // Cadastra o usuario
+                dao.cadastrarUsuario(usuario);
+            }
         }
-        
-        
-
-        
-        
-        
-        
     }//GEN-LAST:event_confirmarCadastroButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cadastroCargoInput;
     private javax.swing.JTextField cadastroNomeInput;
-    private javax.swing.JTextField cadastroPerfilInput1;
+    private javax.swing.JTextField cadastroPerfilInput;
     private javax.swing.JTextField cadastroSenhaInput;
     private javax.swing.JTextField cadastroTelefoneInput;
     private javax.swing.JTextField cadastroUsuarioInput;

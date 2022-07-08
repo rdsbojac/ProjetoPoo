@@ -68,11 +68,11 @@ public class TelaLogin extends javax.swing.JFrame {
                 /*String perfil = rs.getString(7);*/
                 
                 String nome = rs.getString(2);
-                String cargo = rs.getString(4);
+                String perfil = rs.getString(5);
                 //print para saber o retorno da strng Perfil
-                System.out.println(cargo);
+                System.out.println(perfil);
                 // compara o perfil com "adimn" para todos os botoes ficarem disponiveis
-                if (cargo.equals("Gerente")){
+                if (perfil.equals("admin")){
                     exibeTelaGerente(nome);
                 }else{
                     exibeTelaMecanico(nome);

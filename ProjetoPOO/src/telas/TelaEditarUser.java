@@ -108,13 +108,15 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         editarTelefoneInput = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        editarCargoInput = new javax.swing.JTextField();
+        editarPerfilInput = new javax.swing.JTextField();
         editarUsuarioInput = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         editarSenhaInput = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         idInput = new javax.swing.JSpinner();
+        jLabel20 = new javax.swing.JLabel();
+        editarCargoInput = new javax.swing.JTextField();
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Nome");
@@ -371,10 +373,10 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel16.setText("Cargo");
 
-        editarCargoInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        editarCargoInput.addActionListener(new java.awt.event.ActionListener() {
+        editarPerfilInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        editarPerfilInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editarCargoInputActionPerformed(evt);
+                editarPerfilInputActionPerformed(evt);
             }
         });
 
@@ -403,6 +405,16 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
 
         idInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel20.setText("Perfil");
+
+        editarCargoInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        editarCargoInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarCargoInputActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -415,15 +427,18 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
                     .addComponent(jLabel16)
                     .addComponent(jLabel17)
                     .addComponent(jLabel18)
-                    .addComponent(jLabel19))
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20))
                 .addGap(59, 59, 59)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(editarSenhaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                    .addComponent(editarUsuarioInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                    .addComponent(editarCargoInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                    .addComponent(editarTelefoneInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                    .addComponent(editarNomeInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                    .addComponent(idInput))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(editarPerfilInput, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(editarSenhaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                        .addComponent(editarUsuarioInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                        .addComponent(editarTelefoneInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                        .addComponent(editarNomeInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                        .addComponent(idInput)
+                        .addComponent(editarCargoInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -441,50 +456,52 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(editarCargoInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(editarPerfilInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(editarUsuarioInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel18))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(editarUsuarioInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(editarSenhaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(editarSenhaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
-                    .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(idInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(confirmarEdicaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(9, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(confirmarEdicaoButton)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(76, 76, 76)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(83, Short.MAX_VALUE)))
         );
 
         pack();
@@ -536,15 +553,28 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
         String nome = editarNomeInput.getText().strip();
         String numero = editarTelefoneInput.getText().strip();
         String cargo = editarCargoInput.getText().strip().toLowerCase();
+        String perfil = editarPerfilInput.getText().strip().toLowerCase();
         String login = editarUsuarioInput.getText().strip();
         String senha = editarSenhaInput.getText().strip();
         int id = (int) idInput.getValue();
         
         // Verifica se todos os campos foram preenchidos
         if (nome.isBlank() || numero.isBlank() || cargo.isBlank()
-            || login.isBlank() || senha.isBlank()) {
+            || login.isBlank() || senha.isBlank() || perfil.isBlank()) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
         } else {
+            boolean valido = false;
+            
+            // Verifica se o PERFIL e CARGO são válidos
+            if ((perfil.equals("admin") || perfil.equals("user")) &&
+                (cargo.equals("gerente") || cargo.equals("mecanico"))) {
+                valido = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Perfil ou cargo inválido!");
+            }
+            
+            if (valido) {
+                
             // Verifica se o id existe dentro no Banco de dados
             Usuario usuario = buscaUsuario(id);
             
@@ -552,23 +582,24 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
             usuario.setNome(nome);
             usuario.setNumero(numero);
             usuario.setCargo(cargo);
+            usuario.setPerfil(perfil);
             usuario.setLogin(login);
             usuario.setSenha(senha);
             
             // Salva no banco de dados
             UsuarioDao dao = new UsuarioDao();
             dao.editarUsuario(usuario, id);
+            }
         }
-        
     }//GEN-LAST:event_confirmarEdicaoButtonActionPerformed
 
     private void editarTelefoneInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarTelefoneInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editarTelefoneInputActionPerformed
 
-    private void editarCargoInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarCargoInputActionPerformed
+    private void editarPerfilInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPerfilInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_editarCargoInputActionPerformed
+    }//GEN-LAST:event_editarPerfilInputActionPerformed
 
     private void editarUsuarioInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarUsuarioInputActionPerformed
         // TODO add your handling code here:
@@ -581,6 +612,10 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
     private void editarNomeInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarNomeInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editarNomeInputActionPerformed
+
+    private void editarCargoInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarCargoInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editarCargoInputActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -599,6 +634,7 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
     private javax.swing.JButton confirmarEdicaoButton;
     private javax.swing.JTextField editarCargoInput;
     private javax.swing.JTextField editarNomeInput;
+    private javax.swing.JTextField editarPerfilInput;
     private javax.swing.JTextField editarSenhaInput;
     private javax.swing.JTextField editarTelefoneInput;
     private javax.swing.JTextField editarUsuarioInput;
@@ -615,6 +651,7 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

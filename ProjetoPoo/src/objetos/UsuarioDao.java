@@ -24,8 +24,8 @@ public class UsuarioDao {
     // Método para Cadastrar um novo Usuário
     public void cadastrarUsuario(Usuario usuario) {
         String sql = "insert into tbUsuarios "
-                + "(nomeUser, numeroUser, cargo, loginUser, senhaUser)"
-                + " values (?,?,?,?,?)";
+                + "(nomeUser, numeroUser, cargo, perfil, loginUser, senhaUser)"
+                + " values (?,?,?,?,?,?)";
         
         try {
             // statement
@@ -36,9 +36,11 @@ public class UsuarioDao {
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getNumero());
             stmt.setString(3, usuario.getCargo());
-            stmt.setString(4, usuario.getLogin());
-            stmt.setString(5, usuario.getSenha());
+            stmt.setString(4, usuario.getPerfil());
+            stmt.setString(5, usuario.getLogin());
+            stmt.setString(6, usuario.getSenha());
             System.out.println("passou valores!");
+            
             
             // Executa o statement
             stmt.execute();
@@ -55,7 +57,7 @@ public class UsuarioDao {
     // Método para Editar um Usuário existente
     public void editarUsuario(Usuario usuario, int id) {
         String sql = "update tbUsuarios"
-                + " set nomeUser=?, numeroUser=?, cargo=?, loginUser=?, senhaUser=?"
+                + " set nomeUser=?, numeroUser=?, cargo=?, perfil=?, loginUser=?, senhaUser=?"
                 + "where id=?";
         
         try {
@@ -67,9 +69,10 @@ public class UsuarioDao {
             stmt.setString(1, usuario.getNome());
             stmt.setString(2, usuario.getNumero());
             stmt.setString(3, usuario.getCargo());
-            stmt.setString(4, usuario.getLogin());
-            stmt.setString(5, usuario.getSenha());
-            stmt.setInt(6, id);
+            stmt.setString(4, usuario.getPerfil());
+            stmt.setString(5, usuario.getLogin());
+            stmt.setString(6, usuario.getSenha());
+            stmt.setInt(7, id);
             System.out.println("passou valores!");
             
             // Executa o statement
