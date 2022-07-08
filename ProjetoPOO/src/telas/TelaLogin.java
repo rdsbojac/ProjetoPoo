@@ -136,7 +136,7 @@ public class TelaLogin extends javax.swing.JFrame {
         senhaInput.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         idLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        idLabel.setText("ID");
+        idLabel.setText("Usuário");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

@@ -11,16 +11,17 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Jonas Felix
+ * @author laris
  */
-public class GerenteDao {
+public class UsuarioDao {
     // Conexão com Banco de dados
     private Connection conexao;
     
-    public GerenteDao() {
+    public UsuarioDao() {
         this.conexao = new ModuloConexao().conector();
     }
     
+    // Método para Cadastrar um novo Usuário
     public void cadastrarUsuario(Usuario usuario) {
         String sql = "insert into tbUsuarios "
                 + "(nomeUser, numeroUser, cargo, loginUser, senhaUser)"
@@ -51,6 +52,7 @@ public class GerenteDao {
         
     }
     
+    // Método para Editar um Usuário existente
     public void editarUsuario(Usuario usuario, int id) {
         String sql = "update tbUsuarios"
                 + " set nomeUser=?, numeroUser=?, cargo=?, loginUser=?, senhaUser=?"
@@ -74,10 +76,12 @@ public class GerenteDao {
             stmt.execute();
             System.out.println("Executando Comando!");
             stmt.close();
-            System.out.println("Salvo!"); 
+            System.out.println("Editado!"); 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         
     }
+    
+    
 }

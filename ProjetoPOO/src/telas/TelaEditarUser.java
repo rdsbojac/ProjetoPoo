@@ -4,11 +4,59 @@
  */
 package telas;
 
+import datal.ModuloConexao;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import objetos.Usuario;
+import objetos.UsuarioDao;
+
 /**
  *
  * @author Ronaldo Daniel
  */
 public class TelaEditarUser extends javax.swing.JInternalFrame {
+    
+    public Usuario buscaUsuario(int id) {
+        Connection conexao = null;
+        
+        String sql = "select * from tbUsuarios where id=?";
+        
+        try {
+            // Gera conexão e Statement
+            conexao = new ModuloConexao().conector();
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            
+            //CONSULTA BANCO DE DADOS E SUBSTITUI OS "?" PELO CONTEUDO SELECIONADO
+            stmt.setInt(1, id);
+            
+            //EXECUTA AS INTRUÇÕES
+            ResultSet rs = stmt.executeQuery();
+            
+            // Verifica se existe um funcionário com esse id
+            if (rs.next()){
+                // Cria o funcionário
+                Usuario usuario = new Usuario();
+                
+                usuario.setNome(rs.getString(2));
+                usuario.setNumero(rs.getString(3));
+                usuario.setCargo(rs.getString(4));
+                usuario.setLogin(rs.getString(5));
+                usuario.setSenha(rs.getString(6));
+                
+                // Retorna o usuário encontrado
+                return usuario;
+            } else {
+                JOptionPane.showMessageDialog(null, "Id inválido");
+                return null;
+            }
+            
+        } catch (SQLException e ) {
+            throw new RuntimeException(e);
+        }
+}
 
     /**
      * Creates new form TelaEditarUser
@@ -53,20 +101,20 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         cadastroSenhaInput3 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        confirmarCadastroButton = new javax.swing.JButton();
+        confirmarEdicaoButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        cadastroNomeInput2 = new javax.swing.JTextField();
+        editarNomeInput = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        cadastroTelefoneInput2 = new javax.swing.JTextField();
+        editarTelefoneInput = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        cadastroCargoInput2 = new javax.swing.JTextField();
-        cadastroUsuarioInput2 = new javax.swing.JTextField();
+        editarCargoInput = new javax.swing.JTextField();
+        editarUsuarioInput = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        cadastroSenhaInput4 = new javax.swing.JTextField();
+        editarSenhaInput = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        cadastroSenhaInput5 = new javax.swing.JTextField();
+        idInput = new javax.swing.JSpinner();
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Nome");
@@ -292,43 +340,48 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Editar Usuário");
 
-        confirmarCadastroButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        confirmarCadastroButton.setText("Confirmar");
-        confirmarCadastroButton.addActionListener(new java.awt.event.ActionListener() {
+        confirmarEdicaoButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        confirmarEdicaoButton.setText("Confirmar");
+        confirmarEdicaoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmarCadastroButtonActionPerformed(evt);
+                confirmarEdicaoButtonActionPerformed(evt);
             }
         });
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel14.setText("Nome");
 
-        cadastroNomeInput2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        editarNomeInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        editarNomeInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarNomeInputActionPerformed(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setText("Telefone");
 
-        cadastroTelefoneInput2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cadastroTelefoneInput2.addActionListener(new java.awt.event.ActionListener() {
+        editarTelefoneInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        editarTelefoneInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroTelefoneInput2ActionPerformed(evt);
+                editarTelefoneInputActionPerformed(evt);
             }
         });
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel16.setText("Cargo");
 
-        cadastroCargoInput2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cadastroCargoInput2.addActionListener(new java.awt.event.ActionListener() {
+        editarCargoInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        editarCargoInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroCargoInput2ActionPerformed(evt);
+                editarCargoInputActionPerformed(evt);
             }
         });
 
-        cadastroUsuarioInput2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cadastroUsuarioInput2.addActionListener(new java.awt.event.ActionListener() {
+        editarUsuarioInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        editarUsuarioInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroUsuarioInput2ActionPerformed(evt);
+                editarUsuarioInputActionPerformed(evt);
             }
         });
 
@@ -338,22 +391,17 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel18.setText("Senha");
 
-        cadastroSenhaInput4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cadastroSenhaInput4.addActionListener(new java.awt.event.ActionListener() {
+        editarSenhaInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        editarSenhaInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroSenhaInput4ActionPerformed(evt);
+                editarSenhaInputActionPerformed(evt);
             }
         });
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel19.setText("Perfil");
+        jLabel19.setText("ID");
 
-        cadastroSenhaInput5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cadastroSenhaInput5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cadastroSenhaInput5ActionPerformed(evt);
-            }
-        });
+        idInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -369,13 +417,13 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
                     .addComponent(jLabel18)
                     .addComponent(jLabel19))
                 .addGap(59, 59, 59)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cadastroSenhaInput5, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cadastroSenhaInput4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cadastroUsuarioInput2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cadastroCargoInput2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cadastroTelefoneInput2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cadastroNomeInput2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(editarSenhaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                    .addComponent(editarUsuarioInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                    .addComponent(editarCargoInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                    .addComponent(editarTelefoneInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                    .addComponent(editarNomeInput, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                    .addComponent(idInput))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -384,28 +432,28 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(cadastroNomeInput2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editarNomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(cadastroTelefoneInput2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editarTelefoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(cadastroCargoInput2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editarCargoInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(cadastroUsuarioInput2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editarUsuarioInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(cadastroSenhaInput4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(editarSenhaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cadastroSenhaInput5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -416,7 +464,7 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(confirmarCadastroButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(confirmarEdicaoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -430,13 +478,13 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
-                .addComponent(confirmarCadastroButton)
+                .addComponent(confirmarEdicaoButton)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(76, 76, 76)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(85, Short.MAX_VALUE)))
+                    .addContainerGap(83, Short.MAX_VALUE)))
         );
 
         pack();
@@ -482,51 +530,79 @@ public class TelaEditarUser extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cadastroSenhaInput3ActionPerformed
 
-    private void confirmarCadastroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarCadastroButtonActionPerformed
+    private void confirmarEdicaoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarEdicaoButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_confirmarCadastroButtonActionPerformed
+        // recolhe os valores
+        String nome = editarNomeInput.getText().strip();
+        String numero = editarTelefoneInput.getText().strip();
+        String cargo = editarCargoInput.getText().strip().toLowerCase();
+        String login = editarUsuarioInput.getText().strip();
+        String senha = editarSenhaInput.getText().strip();
+        int id = (int) idInput.getValue();
+        
+        // Verifica se todos os campos foram preenchidos
+        if (nome.isBlank() || numero.isBlank() || cargo.isBlank()
+            || login.isBlank() || senha.isBlank()) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        } else {
+            // Verifica se o id existe dentro no Banco de dados
+            Usuario usuario = buscaUsuario(id);
+            
+            // seta os novos valores
+            usuario.setNome(nome);
+            usuario.setNumero(numero);
+            usuario.setCargo(cargo);
+            usuario.setLogin(login);
+            usuario.setSenha(senha);
+            
+            // Salva no banco de dados
+            UsuarioDao dao = new UsuarioDao();
+            dao.editarUsuario(usuario, id);
+        }
+        
+    }//GEN-LAST:event_confirmarEdicaoButtonActionPerformed
 
-    private void cadastroTelefoneInput2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroTelefoneInput2ActionPerformed
+    private void editarTelefoneInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarTelefoneInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cadastroTelefoneInput2ActionPerformed
+    }//GEN-LAST:event_editarTelefoneInputActionPerformed
 
-    private void cadastroCargoInput2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroCargoInput2ActionPerformed
+    private void editarCargoInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarCargoInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cadastroCargoInput2ActionPerformed
+    }//GEN-LAST:event_editarCargoInputActionPerformed
 
-    private void cadastroUsuarioInput2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroUsuarioInput2ActionPerformed
+    private void editarUsuarioInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarUsuarioInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cadastroUsuarioInput2ActionPerformed
+    }//GEN-LAST:event_editarUsuarioInputActionPerformed
 
-    private void cadastroSenhaInput4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroSenhaInput4ActionPerformed
+    private void editarSenhaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarSenhaInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cadastroSenhaInput4ActionPerformed
+    }//GEN-LAST:event_editarSenhaInputActionPerformed
 
-    private void cadastroSenhaInput5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroSenhaInput5ActionPerformed
+    private void editarNomeInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarNomeInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cadastroSenhaInput5ActionPerformed
+    }//GEN-LAST:event_editarNomeInputActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cadastroCargoInput;
     private javax.swing.JTextField cadastroCargoInput1;
-    private javax.swing.JTextField cadastroCargoInput2;
     private javax.swing.JTextField cadastroNomeInput;
     private javax.swing.JTextField cadastroNomeInput1;
-    private javax.swing.JTextField cadastroNomeInput2;
     private javax.swing.JTextField cadastroSenhaInput;
     private javax.swing.JTextField cadastroSenhaInput1;
     private javax.swing.JTextField cadastroSenhaInput2;
     private javax.swing.JTextField cadastroSenhaInput3;
-    private javax.swing.JTextField cadastroSenhaInput4;
-    private javax.swing.JTextField cadastroSenhaInput5;
     private javax.swing.JTextField cadastroTelefoneInput;
     private javax.swing.JTextField cadastroTelefoneInput1;
-    private javax.swing.JTextField cadastroTelefoneInput2;
     private javax.swing.JTextField cadastroUsuarioInput;
     private javax.swing.JTextField cadastroUsuarioInput1;
-    private javax.swing.JTextField cadastroUsuarioInput2;
-    private javax.swing.JButton confirmarCadastroButton;
+    private javax.swing.JButton confirmarEdicaoButton;
+    private javax.swing.JTextField editarCargoInput;
+    private javax.swing.JTextField editarNomeInput;
+    private javax.swing.JTextField editarSenhaInput;
+    private javax.swing.JTextField editarTelefoneInput;
+    private javax.swing.JTextField editarUsuarioInput;
+    private javax.swing.JSpinner idInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

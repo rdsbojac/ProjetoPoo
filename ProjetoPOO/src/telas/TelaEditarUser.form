@@ -379,7 +379,7 @@
               <Component id="jLabel1" pref="415" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <Component id="confirmarCadastroButton" max="32767" attributes="0"/>
+              <Component id="confirmarEdicaoButton" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -397,14 +397,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="374" max="32767" attributes="0"/>
-              <Component id="confirmarCadastroButton" min="-2" max="-2" attributes="0"/>
+              <Component id="confirmarEdicaoButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="85" max="32767" attributes="0"/>
+                  <EmptySpace pref="83" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -420,7 +420,7 @@
         <Property name="text" type="java.lang.String" value="Editar Usu&#xe1;rio"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="confirmarCadastroButton">
+    <Component class="javax.swing.JButton" name="confirmarEdicaoButton">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
@@ -428,7 +428,7 @@
         <Property name="text" type="java.lang.String" value="Confirmar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmarCadastroButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmarEdicaoButtonActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel3">
@@ -447,13 +447,13 @@
                       <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cadastroSenhaInput5" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
-                      <Component id="cadastroSenhaInput4" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
-                      <Component id="cadastroUsuarioInput2" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
-                      <Component id="cadastroCargoInput2" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
-                      <Component id="cadastroTelefoneInput2" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
-                      <Component id="cadastroNomeInput2" alignment="0" min="-2" pref="203" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="editarSenhaInput" alignment="0" pref="203" max="32767" attributes="0"/>
+                      <Component id="editarUsuarioInput" alignment="0" pref="203" max="32767" attributes="0"/>
+                      <Component id="editarCargoInput" alignment="0" pref="203" max="32767" attributes="0"/>
+                      <Component id="editarTelefoneInput" alignment="0" pref="203" max="32767" attributes="0"/>
+                      <Component id="editarNomeInput" alignment="0" pref="203" max="32767" attributes="0"/>
+                      <Component id="idInput" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="54" max="32767" attributes="0"/>
               </Group>
@@ -465,34 +465,34 @@
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cadastroNomeInput2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="editarNomeInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cadastroTelefoneInput2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="editarTelefoneInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cadastroCargoInput2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="editarCargoInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cadastroUsuarioInput2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="editarUsuarioInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cadastroSenhaInput4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="editarSenhaInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cadastroSenhaInput5" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="idInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -506,12 +506,15 @@
             <Property name="text" type="java.lang.String" value="Nome"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="cadastroNomeInput2">
+        <Component class="javax.swing.JTextField" name="editarNomeInput">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editarNomeInputActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
@@ -521,14 +524,14 @@
             <Property name="text" type="java.lang.String" value="Telefone"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="cadastroTelefoneInput2">
+        <Component class="javax.swing.JTextField" name="editarTelefoneInput">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroTelefoneInput2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editarTelefoneInputActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
@@ -539,24 +542,24 @@
             <Property name="text" type="java.lang.String" value="Cargo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="cadastroCargoInput2">
+        <Component class="javax.swing.JTextField" name="editarCargoInput">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroCargoInput2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editarCargoInputActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="cadastroUsuarioInput2">
+        <Component class="javax.swing.JTextField" name="editarUsuarioInput">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroUsuarioInput2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editarUsuarioInputActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
@@ -575,14 +578,14 @@
             <Property name="text" type="java.lang.String" value="Senha"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="cadastroSenhaInput4">
+        <Component class="javax.swing.JTextField" name="editarSenhaInput">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroSenhaInput4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editarSenhaInputActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel19">
@@ -590,18 +593,15 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Perfil"/>
+            <Property name="text" type="java.lang.String" value="ID"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="cadastroSenhaInput5">
+        <Component class="javax.swing.JSpinner" name="idInput">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cadastroSenhaInput5ActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

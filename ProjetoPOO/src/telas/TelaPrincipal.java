@@ -274,6 +274,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaEditarUser editar = new TelaEditarUser();
         editar.setVisible(true);
         desktopPainel.add(editar);
+        
+        
     }//GEN-LAST:event_editUserButtonActionPerformed
 
     private void EditarOsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarOsButtonActionPerformed

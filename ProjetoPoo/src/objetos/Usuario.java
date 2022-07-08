@@ -8,7 +8,7 @@ package objetos;
  *
  * @author Jonas Felix
  */
-public abstract class Usuario extends Pessoa{
+public class Usuario extends Pessoa{
     
     // Atributos
     private String nome;
@@ -58,6 +58,6 @@ public abstract class Usuario extends Pessoa{
     public void setSenha(String senha) {    
         this.senha = senha;
     }
-
-    public abstract void consultarOs();
+    
+    //public abstract void consultarOs();
 }

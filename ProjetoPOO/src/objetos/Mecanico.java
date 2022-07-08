@@ -51,6 +51,7 @@ public class Mecanico extends Usuario {
     }
 
     //Esta função está disponível para todos os Usuarios
+    
     public void consultarOs(){
         //Implementar esta função
     }

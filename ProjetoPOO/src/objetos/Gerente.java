@@ -67,7 +67,7 @@ public class Gerente extends Usuario {
         //Implementar esta função
     }
     //Esta função está disponível para todos os Usuarios
-    @Override
+    
     public void consultarOs(){
         //Implementar esta função
     }
