@@ -14,12 +14,36 @@ import javax.swing.JOptionPane;
  */
 public class TelaLogin extends javax.swing.JFrame {
     
+    public void exibeTelaGerente(String nome) {
+        // Exibe a tela com as funções do Gerente
+        this.dispose();
+        TelaPrincipal principal = new TelaPrincipal();
+        principal.setVisible(true);
+        TelaListarOs telaListar = new TelaListarOs();
+        telaListar.setVisible(true);
+        TelaPrincipal.CadastraUsuButton.setEnabled(true);
+        TelaPrincipal.editUserButton.setEnabled(true);
+        TelaPrincipal.EditarOsButton.setEnabled(true);
+        TelaPrincipal.criarOsButton.setEnabled(false);
+        TelaPrincipal.statusLabel.setText(nome);
+        TelaPrincipal.statusLabel.setForeground(Color.red);        
+    }
     
-    
-
+    public void exibeTelaMecanico(String nome) {
+        // Exibe a tela com as funções do Mecanico
+        this.dispose();
+        TelaPrincipal principal = new TelaPrincipal();
+        principal.setVisible(true);
+        TelaListarOs telaListar = new TelaListarOs();
+        telaListar.setVisible(true);
+        TelaPrincipal.CadastraUsuButton.setEnabled(false);
+        TelaPrincipal.editUserButton.setEnabled(false);
+        TelaPrincipal.EditarOsButton.setEnabled(false);
+        TelaPrincipal.statusLabel.setText(nome);
+        TelaPrincipal.statusLabel.setForeground(Color.red);
+    }
     
     public void validar(){
-        
         Connection conexao = null;
         
         String sql = "select * from tbUsuarios where loginUser=? and senhaUser=?";
@@ -49,29 +73,9 @@ public class TelaLogin extends javax.swing.JFrame {
                 System.out.println(cargo);
                 // compara o perfil com "adimn" para todos os botoes ficarem disponiveis
                 if (cargo.equals("Gerente")){
-                    TelaPrincipal principal = new TelaPrincipal();
-                    principal.setVisible(true);
-                    TelaListarOs telaListar = new TelaListarOs();
-                    telaListar.setVisible(true);
-                    TelaPrincipal.CadastraUsuButton.setEnabled(true);
-                    TelaPrincipal.editUserButton.setEnabled(true);
-                    TelaPrincipal.EditarOsButton.setEnabled(true);
-                    TelaPrincipal.criarOsButton.setEnabled(false);
-                    TelaPrincipal.statusLabel.setText(nome);
-                    TelaPrincipal.statusLabel.setForeground(Color.red);
-                    this.dispose();
+                    exibeTelaGerente(nome);
                 }else{
-                    TelaPrincipal principal = new TelaPrincipal();
-                    principal.setVisible(true);
-                    TelaListarOs telaListar = new TelaListarOs();
-                    telaListar.setVisible(true);
-                    TelaPrincipal.CadastraUsuButton.setEnabled(false);
-                    TelaPrincipal.editUserButton.setEnabled(false);
-                    TelaPrincipal.EditarOsButton.setEnabled(false);
-                    TelaPrincipal.statusLabel.setText(nome);
-                    TelaPrincipal.statusLabel.setForeground(Color.red);
- 
-      
+                    exibeTelaMecanico(nome);
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "usuario/senha inválido");

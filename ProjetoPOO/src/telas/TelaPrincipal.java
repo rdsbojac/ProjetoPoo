@@ -294,6 +294,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void sairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairButtonActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_sairButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
