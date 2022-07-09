@@ -86,5 +86,59 @@ public class UsuarioDao {
         
     }
     
+    public void cadastrarCliente(Cliente cliente) {
+        String sql = "insert into tbCliente "
+                + "(nomeCliente, numeroCli, emailClie)"
+                + "values (?,?,?)";
+        
+        try {
+            // statement
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            System.out.println("Preparou o statement!");
+            
+            // Preenche valores
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getNumero());
+            stmt.setString(3, cliente.getEmail());
+            System.out.println("passou valores!");
+            
+            // Executa o statement
+            stmt.execute();
+            System.out.println("Executando Comando!");
+            stmt.close();
+            System.out.println("Editado!"); 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void adicionarOs(OrdemServico os) {
+        String sql = "insert into tbOs "
+                + "(veiculo, defeito, servico, idMecanico, valorServico, idCliente)"
+                + " values (?,?,?,?,?,?)";
+        
+        try {
+            // statement
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            System.out.println("Preparou o statement!");
+            
+            // Preenche valores
+            stmt.setString(1, os.getVeiculo());
+            stmt.setString(2, os.getDefeito());
+            stmt.setString(3, os.getServico());
+            stmt.setLong(4, os.getMecanico());
+            stmt.setString(5, os.getValorServico());
+            stmt.setLong(6, os.getCliente());
+            System.out.println("passou valores!");
+            
+            // Executa o statement
+            stmt.execute();
+            System.out.println("Executando Comando!");
+            stmt.close();
+            System.out.println("Cliente salvo!"); 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    } 
     
 }

@@ -10,23 +10,18 @@ package objetos;
  */
 public class OrdemServico {
     
-    private Long os;
-    private String dataOs;
+    private int os;
     private String veiculo;
     private String defeito;
     private String servico;
-    private Usuario mecanico;
-    private double valorServico;
-    private Cliente cliente;
+    private int mecanico;
+    private String valorServico;
+    private int cliente;
 
     
     // ========= GETTERS AND SETTERS ======= \\
-    public Long getOs() {
+    public int getOs() {
         return os;
-    }
-
-    public String getDataOs() {
-        return dataOs;
     }
 
     public String getVeiculo() {
@@ -41,24 +36,20 @@ public class OrdemServico {
         return servico;
     }
 
-    public Usuario getMecanico() {
+    public int getMecanico() {
         return mecanico;
     }
 
-    public double getValorServico() {
+    public String getValorServico() {
         return valorServico;
     }
 
-    public Cliente getCliente() {
+    public int getCliente() {
         return cliente;
     }
 
-    public void setOs(Long os) {
+    public void setOs(int os) {
         this.os = os;
-    }
-
-    public void setDataOs(String dataOs) {
-        this.dataOs = dataOs;
     }
 
     public void setVeiculo(String veiculo) {
@@ -73,15 +64,15 @@ public class OrdemServico {
         this.servico = servico;
     }
 
-    public void setMecanico(Usuario mecanico) {
+    public void setMecanico(int mecanico) {
         this.mecanico = mecanico;
     }
 
-    public void setValorServico(double valorServico) {
+    public void setValorServico(String valorServico) {
         this.valorServico = valorServico;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(int cliente) {
         this.cliente = cliente;
     }
     

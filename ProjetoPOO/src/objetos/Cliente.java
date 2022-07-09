@@ -12,16 +12,27 @@ public class Cliente extends Pessoa{
 
     
         // ===== ATRIBUTOS ===== \\
+        private int id;
         private String nome;
         private String endCliente;
 	private String numero;
 	private String email;
-	
         
-        // =========== GETTERS AND SETTERS ===========\\
-	public String getNumero() {
-		return numero;
+        
+	
+
+    // =========== GETTERS AND SETTERS ===========\\
+        public int getId() {
+		return id;
 	}
+        
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getNumero() {
+            return numero;
+        }
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}

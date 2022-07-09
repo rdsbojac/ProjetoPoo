@@ -69,7 +69,7 @@ values ('Joao Jose', '81993275837' ,'seila@gmail.com'),
 	   ('Gustavo Pereira', '819857621232' ,'seila3@gmail.com');
        
 -- Insere valores na tabela de Ordem de Seriviço
-insert into tbOs(veiculo, defeito, servico, idMecanico, valorServico, idCliente)
+insert into tbOs (veiculo, defeito, servico, idMecanico, valorServico, idCliente)
 values('prisma', 'arcondicionado quebrado', 'Troca do Filtro', '2', 500.45, 3);
 
 /* As linhas abaixo exibem os dados das tabelas */
