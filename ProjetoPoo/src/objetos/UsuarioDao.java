@@ -199,7 +199,7 @@ public class UsuarioDao {
     // Método para apagar um ordem de serviço
     public void apagarOs(OrdemServico os){
         try {
-            PreparedStatement stmt = conexao.prepareStatement("delete * from tbOs where id=?");
+            PreparedStatement stmt = conexao.prepareStatement("delete from tbOs where id=?");
             stmt.setInt(1, os.getOs());
 
             stmt.execute();
