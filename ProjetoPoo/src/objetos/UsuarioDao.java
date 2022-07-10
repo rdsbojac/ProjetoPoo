@@ -141,4 +141,19 @@ public class UsuarioDao {
         }
     } 
     
+    public void apagarOs(OrdemServico os){
+              try {
+          PreparedStatement stmt = conexao.prepareStatement("delete from  where id=?");
+          stmt.setInt(1, os.getOs());
+         
+          stmt.execute();
+          stmt.close();
+      } catch (SQLException e) {
+          throw new RuntimeException(e);
+      }
+
+            
+    
+    
+    }    
 }

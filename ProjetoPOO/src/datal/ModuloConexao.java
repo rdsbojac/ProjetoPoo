@@ -18,7 +18,7 @@ public class ModuloConexao {
     public Connection conector() {
         try {
             return DriverManager.getConnection(
-             "jdbc:mysql://localhost:3307/dbOficina", "root", "root");
+             "jdbc:mysql://localhost:3306/dbOficina", "root", "root");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

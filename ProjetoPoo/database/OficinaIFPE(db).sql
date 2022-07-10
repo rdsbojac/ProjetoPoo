@@ -87,6 +87,10 @@ update tbCliente set endCliente='Rua da Gloria, 197 - Boa vista' where idCliente
 
 delete from tbUsuarios where idUser=3;
 
+-- a linha abaixo deleta dados da tabela 
+
+delete from tbOs where idUser=;
+
 -- o codigo abaixo tras informacoes de duas tabelas
 
 -- Referenciar o atributo colocando A VARIAVEL na frente
