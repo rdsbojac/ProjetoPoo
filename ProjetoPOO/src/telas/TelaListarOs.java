@@ -4,11 +4,61 @@
  */
 package telas;
 
+import datal.ModuloConexao;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import objetos.OrdemServico;
+import static telas.TelaPrincipal.desktopPainel;
+
 /**
  *
  * @author Ronaldo Daniel
  */
 public class TelaListarOs extends javax.swing.JInternalFrame {
+    
+    public List<OrdemServico> pesquisaOs() {
+        try {
+            // pega a conexão e o Statement
+            Connection con = new ModuloConexao().conector();
+            PreparedStatement stmt = con.prepareStatement("select * from tbOs");
+            
+            // executa um select
+            ResultSet rs = stmt.executeQuery();
+            
+            // Gera a lista de Ordens de serviço
+            List<OrdemServico> OSs = new ArrayList<>();
+            
+            // itera no ResultSet
+            while (rs.next()) {
+                // Cria o objeto Ordem de serviço
+                OrdemServico os = new OrdemServico();
+                os.setOs(rs.getInt("id"));
+                os.setVeiculo(rs.getString("veiculo"));
+                os.setDefeito(rs.getString("defeito"));
+                os.setServico(rs.getString("servico"));
+                os.setMecanico(rs.getInt("idMecanico"));
+                os.setValorServico(rs.getString("valorServico"));
+                os.setCliente(rs.getInt("idCliente"));
+                
+                // adicionando objeto a lista
+                OSs.add(os);
+            }
+            
+            rs.close();
+            stmt.close();
+            con.close();
+            
+            return OSs;
+            
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     /**
      * Creates new form TelaListarOs
@@ -28,8 +78,11 @@ public class TelaListarOs extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
+        List<OrdemServico> oss = pesquisaOs();
+
+        DefaultListModel<String> model = new  DefaultListModel<String>();
+        listaOs = new javax.swing.JList<>(model);
+        consultarOsButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         selfLabel = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -44,12 +97,18 @@ public class TelaListarOs extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Listar Ordem de Serviço");
 
-        jScrollPane1.setViewportView(jList1);
+        for (int i=0; i < oss.size(); i++) {
+            String id = String.valueOf(oss.get(i).getOs());
+            String veiculo = oss.get(i).getVeiculo();
+            String defeito = oss.get(i).getDefeito();
+            model.addElement(id + " " + veiculo + " " + defeito);
+        }
+        jScrollPane1.setViewportView(listaOs);
 
-        jButton1.setText("Consultar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        consultarOsButton.setText("Consultar");
+        consultarOsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                consultarOsButtonActionPerformed(evt);
             }
         });
 
@@ -75,20 +134,21 @@ public class TelaListarOs extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(selfLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(selfLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jRadioButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(consultarOsButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +156,7 @@ public class TelaListarOs extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(consultarOsButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(selfLabel)
                         .addComponent(jRadioButton2)))
@@ -124,19 +184,27 @@ public class TelaListarOs extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void consultarOsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarOsButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String[] valor = listaOs.getSelectedValue().split(" ");
+        System.out.println(valor[0]);
+        
+        TelaDadosOs listar = new TelaDadosOs(Integer.parseInt(valor[0]));
+        this.dispose();
+        listar.setVisible(true);
+        desktopPainel.add(listar);
+        
+    }//GEN-LAST:event_consultarOsButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton consultarOsButton;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> listaOs;
     public static javax.swing.JRadioButton selfLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -89,7 +89,7 @@ public class UsuarioDao {
     // Método para cadastrar novo cliente
     public void cadastrarCliente(Cliente cliente) {
         String sql = "insert into tbCliente "
-                + "(nomeCliente, numeroCli, emailClie)"
+                + "(nomeCliente, numeroCliente, emailCliente)"
                 + "values (?,?,?)";
         
         try {

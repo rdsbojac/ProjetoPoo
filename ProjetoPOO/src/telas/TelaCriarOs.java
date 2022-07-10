@@ -60,7 +60,7 @@ public class TelaCriarOs extends javax.swing.JInternalFrame {
         Connection conexao = null;
         
         String sql = "select * from tbCliente"
-                + " where nomeCliente=? and numeroCli=? and emailClie=?";
+                + " where nomeCliente=? and numeroCliente=? and emailCliente=?";
         
         try {
             // Gera conexão e Statement
