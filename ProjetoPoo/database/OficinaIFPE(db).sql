@@ -44,8 +44,8 @@ create table tbOs(
     valorServico decimal(6,2),
     idCliente bigint not null,
     primary key (id),
-    foreign key (idMecanico) references tbUsuarios(id),
-    foreign key (idCliente) references tbCliente(id)
+    foreign key (idMecanico) references tbUsuarios(id) on delete cascade,
+    foreign key (idCliente) references tbCliente(id) on delete cascade
 );
 
 /*Os comandos abaixo descrevem as tabelas*/
@@ -63,7 +63,7 @@ values ('Ronado Daniel', '81999717049', 'Gerente', 'admin', 'ronaldodaniel', '12
 		('Gabriela Jose', '81986761215', 'Mecanico', 'user',  'gabrielajose', '12345');
 
 -- Insere valores na tabela de Clientes
-insert into tbCliente (nomeCliente, numeroCli, emailClie)
+insert into tbCliente (nomeCliente, numeroCliente, emailCliente)
 values ('Joao Jose', '81993275837' ,'seila@gmail.com'),
 	   ('Paulo Joao', '81995435472' ,'seila2@gmail.com'),
 	   ('Gustavo Pereira', '819857621232' ,'seila3@gmail.com');
@@ -81,15 +81,12 @@ select * from tbOs;
 -- a linha abaixo modifica dados na tabela
 
 update tbUsuarios set numeroUser = '81999707149' where idUser=1;
-update tbCliente set endCliente='Rua da Gloria, 197 - Boa vista' where idCliente=2 ;
+update tbCliente set endCliente='Rua da Gloria, 197 - Boa vista' where idCliente=2;
+update tbos set veiculo="fusca", defeito="batida", servico="martelinho de ouro", idMecanico=3, valorServico="300.00" where id=2;
 
 -- a linha abaixo deleta dados da tabela
 
 delete from tbUsuarios where idUser=3;
-
--- a linha abaixo deleta dados da tabela 
-
-delete from tbOs where idUser=;
 
 -- o codigo abaixo tras informacoes de duas tabelas
 

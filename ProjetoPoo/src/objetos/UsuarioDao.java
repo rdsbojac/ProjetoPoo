@@ -86,6 +86,7 @@ public class UsuarioDao {
         
     }
     
+    // Método para cadastrar novo cliente
     public void cadastrarCliente(Cliente cliente) {
         String sql = "insert into tbCliente "
                 + "(nomeCliente, numeroCli, emailClie)"
@@ -112,6 +113,7 @@ public class UsuarioDao {
         }
     }
     
+    // Método para adicionar uma nova ordem de seriço
     public void adicionarOs(OrdemServico os) {
         String sql = "insert into tbOs "
                 + "(veiculo, defeito, servico, idMecanico, valorServico, idCliente)"
@@ -141,6 +143,37 @@ public class UsuarioDao {
         }
     } 
     
+    // Método para editar Ordem de Serviço
+    public void editarOs(OrdemServico os) {
+        String sql = "update tbos"
+                + " set veiculo=?, defeito=?, servico=?, idMecanico=?, valorServico=?"
+                + " where id=?";
+        
+        try {
+            // statement
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            System.out.println("Preparou o statement!");
+            
+            // Preenche valores
+            stmt.setString(1, os.getVeiculo());
+            stmt.setString(2, os.getDefeito());
+            stmt.setString(3, os.getServico());
+            stmt.setInt(4, os.getMecanico());
+            stmt.setString(5, os.getValorServico());
+            stmt.setInt(6, os.getOs());
+            System.out.println("passou valores!");
+            
+            // Executa o statement
+            stmt.execute();
+            System.out.println("Executando Comando!");
+            stmt.close();
+            System.out.println("Editado!"); 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    // Método para apagar um ordem de serviço
     public void apagarOs(OrdemServico os){
               try {
           PreparedStatement stmt = conexao.prepareStatement("delete from  where id=?");
