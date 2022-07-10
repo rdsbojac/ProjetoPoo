@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import objetos.OrdemServico;
+import objetos.UsuarioDao;
 import static telas.TelaPrincipal.desktopPainel;
 
 /**
@@ -84,9 +85,8 @@ public class TelaListarOs extends javax.swing.JInternalFrame {
         listaOs = new javax.swing.JList<>(model);
         consultarOsButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        selfLabel = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jScrollBar1 = new javax.swing.JScrollBar();
+        deletarButton = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -114,17 +114,10 @@ public class TelaListarOs extends javax.swing.JInternalFrame {
 
         jButton2.setText("Sair");
 
-        selfLabel.setText("Este Usuário");
-        selfLabel.addActionListener(new java.awt.event.ActionListener() {
+        deletarButton.setText("Deletar");
+        deletarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selfLabelActionPerformed(evt);
-            }
-        });
-
-        jRadioButton2.setText("Todas O.S");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                deletarButtonActionPerformed(evt);
             }
         });
 
@@ -136,10 +129,8 @@ public class TelaListarOs extends javax.swing.JInternalFrame {
                 .addContainerGap(19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(selfLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(deletarButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(consultarOsButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -155,11 +146,9 @@ public class TelaListarOs extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(consultarOsButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(selfLabel)
-                        .addComponent(jRadioButton2)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(consultarOsButton)
+                    .addComponent(deletarButton))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(7, 7, 7)
@@ -176,14 +165,6 @@ public class TelaListarOs extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void selfLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selfLabelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selfLabelActionPerformed
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
     private void consultarOsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarOsButtonActionPerformed
         // TODO add your handling code here:
         String[] valor = listaOs.getSelectedValue().split(" ");
@@ -196,15 +177,28 @@ public class TelaListarOs extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_consultarOsButtonActionPerformed
 
+    private void deletarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarButtonActionPerformed
+        // TODO add your handling code here:
+        String texto = listaOs.getSelectedValue();
+        String[] valores = texto.split(" ");
+        
+        // Gera o objeto
+        OrdemServico os = new OrdemServico();
+        os.setOs(Integer.parseInt(valores[0]));
+        
+        // salva do banco de dados
+        UsuarioDao dao = new UsuarioDao();
+        dao.apagarOs(os);
+    }//GEN-LAST:event_deletarButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton consultarOsButton;
+    private javax.swing.JButton deletarButton;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> listaOs;
-    public static javax.swing.JRadioButton selfLabel;
     // End of variables declaration//GEN-END:variables
 }

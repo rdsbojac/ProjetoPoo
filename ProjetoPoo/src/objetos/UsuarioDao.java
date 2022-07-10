@@ -8,6 +8,7 @@ import datal.ModuloConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,7 +48,7 @@ public class UsuarioDao {
             System.out.println("Executando Comando!");
             stmt.close();
             System.out.println("Salvo!");
-            
+            JOptionPane.showMessageDialog(null, "Usuário Salvo com sucesso!");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -80,6 +81,7 @@ public class UsuarioDao {
             System.out.println("Executando Comando!");
             stmt.close();
             System.out.println("Editado!"); 
+            JOptionPane.showMessageDialog(null, "Usuário editado com sucesso!");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -113,6 +115,25 @@ public class UsuarioDao {
         }
     }
     
+    /*
+    //Método para deletar cliente
+    public void apagarCliente(Cliente cliente) {
+        
+        
+        try {
+            PreparedStatement stmt = conexao.prepareStatement("delete * from tbCliente where id=?");
+            stmt.setInt(1, cliente.getId());
+            
+            stmt.execute();
+            stmt.close();
+            System.out.println("Cliente deletado!");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        
+    }
+    */
+    
     // Método para adicionar uma nova ordem de seriço
     public void adicionarOs(OrdemServico os) {
         String sql = "insert into tbOs "
@@ -137,7 +158,8 @@ public class UsuarioDao {
             stmt.execute();
             System.out.println("Executando Comando!");
             stmt.close();
-            System.out.println("Cliente salvo!"); 
+            System.out.println("ordem de serviço salvo!");
+            JOptionPane.showMessageDialog(null, "Ordem de serviço salva com sucesso!");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -167,7 +189,8 @@ public class UsuarioDao {
             stmt.execute();
             System.out.println("Executando Comando!");
             stmt.close();
-            System.out.println("Editado!"); 
+            System.out.println("Editado!");
+            JOptionPane.showMessageDialog(null, "Ordem de serviço editado com sucesso!");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -175,15 +198,17 @@ public class UsuarioDao {
     
     // Método para apagar um ordem de serviço
     public void apagarOs(OrdemServico os){
-              try {
-          PreparedStatement stmt = conexao.prepareStatement("delete from  where id=?");
-          stmt.setInt(1, os.getOs());
-         
-          stmt.execute();
-          stmt.close();
-      } catch (SQLException e) {
-          throw new RuntimeException(e);
-      }
+        try {
+            PreparedStatement stmt = conexao.prepareStatement("delete * from tbOs where id=?");
+            stmt.setInt(1, os.getOs());
+
+            stmt.execute();
+            stmt.close();
+            System.out.println("Ordem de serviço deletada!");
+            JOptionPane.showMessageDialog(null, "Ordem de serviço deletado com sucesso!");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
             
     
